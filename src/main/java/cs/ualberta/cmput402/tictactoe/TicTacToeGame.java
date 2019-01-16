@@ -1,6 +1,7 @@
 package cs.ualberta.cmput402.tictactoe;
 
 import cs.ualberta.cmput402.tictactoe.board.Board;
+import cs.ualberta.cmput402.tictactoe.board.ScoreBoard;
 import cs.ualberta.cmput402.tictactoe.board.Board.Player;
 import cs.ualberta.cmput402.tictactoe.board.exceptions.InvalidMoveException;
 
