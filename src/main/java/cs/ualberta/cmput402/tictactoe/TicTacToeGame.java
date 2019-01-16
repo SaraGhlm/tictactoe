@@ -43,10 +43,14 @@ public class TicTacToeGame {
                 System.out.println("Invalid coordinates. Try again");
                 promptNextPlayer();
             }
+            if(board.boardIsFull()) break;
         }
 
         board.printBoard();
-        System.out.println("Player " + board.getWinner() + " has won the game!");
+        if(board.getWinner() == null)
+            System.out.println("The game is in a tie!");
+        else
+            System.out.println("Player " + board.getWinner() + " has won the game!");
     }
 
     public static void main(String args[]){
