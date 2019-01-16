@@ -128,5 +128,13 @@ public class Board {
         return board[row][col];
     }
 
-
+    public boolean boardIsFull(){
+        for(int i  = 0; i < 3; i++){
+            for(int j = 0 ; j < 3; j++){
+                if(isSquareAvailable(i, j))
+                    return false;
+                }
+            }
+        return true;
+    }
 }
