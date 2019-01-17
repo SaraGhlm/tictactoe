@@ -19,11 +19,11 @@ public class Board {
         currentPlayer = Player.X;
     }
 
-    private void initBoard(){
+    public void initBoard(){
         for (int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
                 board[i][j] = Player.NONE;
-
+        winner = null;
     }
 
     public void playMove(int row, int col) throws InvalidMoveException {
