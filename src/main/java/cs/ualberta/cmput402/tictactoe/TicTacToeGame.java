@@ -88,6 +88,7 @@ public class TicTacToeGame {
             scoreBoard.printScoreBoard();
             answer = prompt();
         }
+        scoreBoard.printScoreBoard();
     }
 
     public static void main(String args[]){
