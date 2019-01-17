@@ -1,7 +1,6 @@
 package cs.ualberta.cmput402.tictactoe.board;
 
 public class ScoreBoard {
-    public enum Player {X, O, NONE};
     private int X_win,X_loss,X_tie;
     private int O_win,O_loss,O_tie;
 
@@ -15,7 +14,7 @@ public class ScoreBoard {
         O_tie=0;
     }
 
-    public void score(Player player)
+    public void score(Board.Player player)
     {
         switch(player)
         {
