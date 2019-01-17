@@ -8,3 +8,9 @@
 src/test/test.iml
 src/main/main.iml
 out/production/main/META-INF/main.kotlin_module
+*.properties
+*.lst
+target/surefire-reports/BoardTest.txt
+target/surefire-reports/TEST-BoardTest.xml
+target/TicTacToe-1.0-SNAPSHOT-jar-with-dependencies.jar
+target/TicTacToe-1.0-SNAPSHOT.jar

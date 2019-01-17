@@ -32,7 +32,7 @@ public class TicTacToeGame {
 
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
-
+        board.initBoard();
         while (board.getWinner() == null){
             board.printBoard();
             promptNextPlayer();
@@ -47,14 +47,52 @@ public class TicTacToeGame {
         }
 
         board.printBoard();
+
         if (board.getWinner() == Player.NONE)
             System.out.println("The game ended in a tie!");
         else
             System.out.println("Player " + board.getWinner() + " has won the game!");
     }
 
+    public char prompt(){
+        System.out.println("Do you want to play again? (Y/N)");
+        Scanner keyboardScanner = new Scanner(System.in);
+        String line = keyboardScanner.next();
+
+        char answer = ' ';
+        while (Character.isWhitespace(answer)){
+            if(line.equals("Y")){
+                answer = 'Y';
+            }
+            else if(line.equals("N")) {
+                answer = 'N';
+            }
+            else {
+                System.out.println("Invalid! Try again");
+                line = keyboardScanner.next();
+            }
+        }
+        return answer;
+    }
+
+    public void playMultipleGames(){
+        ScoreBoard scoreBoard = new ScoreBoard();
+        playGame();
+        scoreBoard.score(board.getWinner());
+        scoreBoard.printScoreBoard();
+        char answer = prompt();
+        while (answer == 'Y') {
+            System.out.println("lets play again");
+            playGame();
+            scoreBoard.score(board.getWinner());
+            scoreBoard.printScoreBoard();
+            answer = prompt();
+        }
+        scoreBoard.printScoreBoard();
+    }
+
     public static void main(String args[]){
         TicTacToeGame game = new TicTacToeGame();
-        game.playGame();
+        game.playMultipleGames();
     }
 }
