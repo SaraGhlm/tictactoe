@@ -46,6 +46,8 @@ public class Board {
 
             if (hasWon(row, col))
                 winner = currentPlayer;
+            else if (boardIsFull())
+                winner = Player.NONE;
             else if(currentPlayer == Player.X)
                 currentPlayer = Player.O;
             else
@@ -128,7 +130,7 @@ public class Board {
         return board[row][col];
     }
 
-    public boolean boardIsFull(){
+    private boolean boardIsFull(){
         for(int i  = 0; i < 3; i++){
             for(int j = 0 ; j < 3; j++){
                 if(isSquareAvailable(i, j))
