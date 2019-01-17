@@ -76,14 +76,16 @@ public class TicTacToeGame {
     }
 
     public void playMultipleGames(){
-//        ScoreBoard scoreBoard = new ScoreBoard();
-//        scoreBoard.score(board.getWinner());
-//        scoreBoard.printScoreBoard();
+        ScoreBoard scoreBoard = new ScoreBoard();
         playGame();
+        scoreBoard.score(board.getWinner());
+        scoreBoard.printScoreBoard();
         char answer = prompt();
         while (answer == 'Y') {
             System.out.println("lets play again");
             playGame();
+            scoreBoard.score(board.getWinner());
+            scoreBoard.printScoreBoard();
             answer = prompt();
         }
     }
