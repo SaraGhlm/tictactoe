@@ -1,0 +1,10 @@
+
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+*.class
+src/test/test.iml
+src/main/main.iml
+out/production/main/META-INF/main.kotlin_module
