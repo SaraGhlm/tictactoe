@@ -19,11 +19,10 @@ public class Board {
         currentPlayer = Player.X;
     }
 
-    public void initBoard(){
+    private void initBoard(){
         for (int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
                 board[i][j] = Player.NONE;
-        winner = null;
     }
 
     public void playMove(int row, int col) throws InvalidMoveException {
@@ -131,6 +130,9 @@ public class Board {
     }
 
     private boolean boardIsFull(){
+        /*
+        This function shows whether the board is full or not.
+         */
         for(int i  = 0; i < 3; i++){
             for(int j = 0 ; j < 3; j++){
                 if(isSquareAvailable(i, j))

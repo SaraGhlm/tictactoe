@@ -32,7 +32,7 @@ public class TicTacToeGame {
 
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
-        board.initBoard();
+        board = new Board();
         while (board.getWinner() == null){
             board.printBoard();
             promptNextPlayer();
@@ -76,6 +76,10 @@ public class TicTacToeGame {
     }
 
     public void playMultipleGames(){
+        /*
+        This function is used for playing more than one time.
+        It uses the playGame function for each separate game.
+         */
         ScoreBoard scoreBoard = new ScoreBoard();
         playGame();
         scoreBoard.score(board.getWinner());
