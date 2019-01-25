@@ -1,47 +1,42 @@
 package cs.ualberta.cmput402.tictactoe.board;
 
+/**
+ * ScoreBoard class which keeps track of how many games were won, lost, tied by each player and displays scores
+ */
 public class ScoreBoard {
-    private int X_win,X_loss,X_tie;
-    private int O_win,O_loss,O_tie;
+    private int xWin,oWin,tie;
 
-    public ScoreBoard()
-    {
-        X_win=0;
-        X_loss=0;
-        X_tie=0;
-        O_win=0;
-        O_loss=0;
-        O_tie=0;
+    public ScoreBoard() {
+        xWin=0;
+        oWin=0;
+        tie=0;
     }
 
-    public void score(Board.Player player)
-    {
+    //Score up points
+    public void score(Board.Player player) {
         switch(player)
         {
             case X:
-                X_win++;
-                O_loss++;
+                xWin++;
                 break;
             case O:
-                O_win++;
-                X_loss++;
+                oWin++;
                 break;
             case NONE:
-                X_tie++;
-                O_tie++;
+                tie++;
                 break;
         }
     }
 
-    public void printScoreBoard()
-    {
+    //Print the current scoreboard
+    public void printScoreBoard() {
         System.out.println("--------Score Board--------");
         System.out.println("Player | Win | Loss | Tie");
         System.out.println("---------------------------");
-        System.out.printf("   X   |%3d  |%4d  |%3d ",X_win,X_loss,X_tie);
+        System.out.printf("   X   |%3d  |%4d  |%3d ",xWin,oWin,tie);
         System.out.println();
         System.out.println("---------------------------");
-        System.out.printf("   O   |%3d  |%4d  |%3d ",O_win,O_loss,O_tie);
+        System.out.printf("   O   |%3d  |%4d  |%3d ",oWin,xWin,tie);
         System.out.println();
         System.out.println("---------------------------");
     }
