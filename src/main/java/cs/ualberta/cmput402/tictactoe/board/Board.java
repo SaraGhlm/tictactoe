@@ -23,7 +23,6 @@ public class Board {
         for (int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
                 board[i][j] = Player.NONE;
-
     }
 
     public void playMove(int row, int col) throws InvalidMoveException {
@@ -46,6 +45,8 @@ public class Board {
 
             if (hasWon(row, col))
                 winner = currentPlayer;
+            else if (boardIsFull())
+                winner = Player.NONE;
             else if(currentPlayer == Player.X)
                 currentPlayer = Player.O;
             else
@@ -128,5 +129,16 @@ public class Board {
         return board[row][col];
     }
 
-
+    private boolean boardIsFull(){
+        /*
+        This function shows whether the board is full or not.
+         */
+        for(int i  = 0; i < 3; i++){
+            for(int j = 0 ; j < 3; j++){
+                if(isSquareAvailable(i, j))
+                    return false;
+                }
+            }
+        return true;
+    }
 }

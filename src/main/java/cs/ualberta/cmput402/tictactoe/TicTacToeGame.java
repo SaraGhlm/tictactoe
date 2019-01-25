@@ -1,6 +1,7 @@
 package cs.ualberta.cmput402.tictactoe;
 
 import cs.ualberta.cmput402.tictactoe.board.Board;
+import cs.ualberta.cmput402.tictactoe.board.ScoreBoard;
 import cs.ualberta.cmput402.tictactoe.board.Board.Player;
 import cs.ualberta.cmput402.tictactoe.board.exceptions.InvalidMoveException;
 
@@ -31,7 +32,7 @@ public class TicTacToeGame {
 
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
-
+        board = new Board();
         while (board.getWinner() == null){
             board.printBoard();
             promptNextPlayer();
@@ -46,11 +47,56 @@ public class TicTacToeGame {
         }
 
         board.printBoard();
-        System.out.println("Player " + board.getWinner() + " has won the game!");
+
+        if (board.getWinner() == Player.NONE)
+            System.out.println("The game ended in a tie!");
+        else
+            System.out.println("Player " + board.getWinner() + " has won the game!");
+    }
+
+    public char prompt(){
+        System.out.println("Do you want to play again? (Y/N)");
+        Scanner keyboardScanner = new Scanner(System.in);
+        String line = keyboardScanner.next();
+
+        char answer = ' ';
+        while (Character.isWhitespace(answer)){
+            if(line.equals("Y")){
+                answer = 'Y';
+            }
+            else if(line.equals("N")) {
+                answer = 'N';
+            }
+            else {
+                System.out.println("Invalid! Try again");
+                line = keyboardScanner.next();
+            }
+        }
+        return answer;
+    }
+
+    public void playMultipleGames(){
+        /*
+        This function is used for playing more than one time.
+        It uses the playGame function for each separate game.
+         */
+        ScoreBoard scoreBoard = new ScoreBoard();
+        playGame();
+        scoreBoard.score(board.getWinner());
+        scoreBoard.printScoreBoard();
+        char answer = prompt();
+        while (answer == 'Y') {
+            System.out.println("lets play again");
+            playGame();
+            scoreBoard.score(board.getWinner());
+            scoreBoard.printScoreBoard();
+            answer = prompt();
+        }
+        scoreBoard.printScoreBoard();
     }
 
     public static void main(String args[]){
         TicTacToeGame game = new TicTacToeGame();
-        game.playGame();
+        game.playMultipleGames();
     }
 }
